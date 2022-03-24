@@ -2,14 +2,22 @@ package proj.websitesnotification.main.placeholder_service;
 
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.Map;
 
 @Service
 public interface TablePlaceholderService {
-    Map<String, File> getYesterdayVersion();
+    /**
+     * @return вчерашняя версия страниц
+     */
+    Map<String, String> getYesterdayVersion();
 
-    Map<String, File> getTodayVersion();
+    /**
+     * @return сегодняшняя версия страниц
+     */
+    Map<String, String> getTodayVersion();
 
+    /**
+     * Обновление таблиц
+     */
     void updateVersions();
 }

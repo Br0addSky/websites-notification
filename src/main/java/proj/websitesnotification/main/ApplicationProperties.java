@@ -13,5 +13,7 @@ public class ApplicationProperties {
 
     private String htmlPlaceholder;
 
-    private String htmlEncodingType;
+    private String fullName;
+
+    private String emailRecipient;
 }
