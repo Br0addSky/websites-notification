@@ -17,7 +17,9 @@ public interface TablePlaceholderService {
     Map<String, String> getTodayVersion();
 
     /**
-     * Обновление таблиц
+     * Перезапись сегодняшней версии в вчерашнюю
+     *
+     * @param todayVersion версия страниц на сегодня
      */
-    void updateVersions();
+    void updateYesterdayVersion(Map<String, String> todayVersion);
 }

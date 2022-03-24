@@ -28,12 +28,12 @@ public class EmailSender {
 
     @Scheduled(cron = "${send-email-cron}")
     public void sendEmailMessage() {
-        placeholderService.updateVersions();
         Map<String, String> todayVersion = placeholderService.getTodayVersion();
         Map<String, String> yesterdayVersion = placeholderService.getYesterdayVersion();
         String text = buildMessage(comparatorService.getUrlsHtmlChanged(yesterdayVersion, todayVersion),
                 comparatorService.getUrlsHtmlNew(yesterdayVersion, todayVersion), comparatorService.getUrlsHtmlDeleted(yesterdayVersion, todayVersion));
         sendMessage(new String[]{properties.getEmailRecipient()}, SUBJECT, text);
+        placeholderService.updateYesterdayVersion(todayVersion);
     }
 
     private String buildMessage(List<String> changed, Collection<String> added, List<String> deleted) {

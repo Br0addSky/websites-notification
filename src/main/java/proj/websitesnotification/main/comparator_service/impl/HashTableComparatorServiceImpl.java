@@ -5,7 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import proj.websitesnotification.main.comparator_service.HashTableComparatorService;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,9 +18,6 @@ public class HashTableComparatorServiceImpl implements HashTableComparatorServic
 
     @Override
     public List<String> getUrlsHtmlChanged(Map<String, String> yesterdayVersion, Map<String, String> todayVersion) {
-        if (yesterdayVersion == null) {
-            return Collections.emptyList();
-        }
         Set<String> yesterdayUrls = yesterdayVersion.keySet();
         Set<String> todayUrls = todayVersion.keySet();
         return yesterdayUrls.stream()
@@ -28,9 +28,6 @@ public class HashTableComparatorServiceImpl implements HashTableComparatorServic
 
     @Override
     public Collection<String> getUrlsHtmlNew(Map<String, String> yesterdayVersion, Map<String, String> todayVersion) {
-        if (yesterdayVersion == null) {
-            return todayVersion.keySet();
-        }
         Set<String> yesterdayUrls = yesterdayVersion.keySet();
         Set<String> todayUrls = todayVersion.keySet();
         return todayUrls.stream().filter(url -> !yesterdayUrls.contains(url)).collect(Collectors.toList());
@@ -38,9 +35,6 @@ public class HashTableComparatorServiceImpl implements HashTableComparatorServic
 
     @Override
     public List<String> getUrlsHtmlDeleted(Map<String, String> yesterdayVersion, Map<String, String> todayVersion) {
-        if (yesterdayVersion == null) {
-            return Collections.emptyList();
-        }
         Set<String> yesterdayUrls = yesterdayVersion.keySet();
         Set<String> todayUrls = todayVersion.keySet();
         return yesterdayUrls.stream().filter(url -> !todayUrls.contains(url)).collect(Collectors.toList());
