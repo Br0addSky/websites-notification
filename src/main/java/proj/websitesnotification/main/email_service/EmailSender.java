@@ -11,7 +11,6 @@ import proj.websitesnotification.main.ApplicationProperties;
 import proj.websitesnotification.main.comparator_service.HashTableComparatorService;
 import proj.websitesnotification.main.placeholder_service.TablePlaceholderService;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +35,7 @@ public class EmailSender {
         placeholderService.updateYesterdayVersion(todayVersion);
     }
 
-    private String buildMessage(List<String> changed, Collection<String> added, List<String> deleted) {
+    private String buildMessage(List<String> changed, List<String> added, List<String> deleted) {
         String greetingMessage = String.format("Здравствуйте, дорогая %s", properties.getFullName());
         String bodyMessage = String.format("За последние сутки во вверенных Вам сайтах произошли следующие изменения:%nИсчезли следующие страницы: %s%nПоявились следующие новые страницы: %s%nИзменились следующие страницы: %s",
                 deleted, added, changed);

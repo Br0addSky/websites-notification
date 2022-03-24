@@ -2,7 +2,6 @@ package proj.websitesnotification.main.comparator_service;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public interface HashTableComparatorService {
      * @param todayVersion     сегодняшняя версия
      * @return список созданных страниц
      */
-    Collection<String> getUrlsHtmlNew(Map<String, String> yesterdayVersion, Map<String, String> todayVersion);
+    List<String> getUrlsHtmlNew(Map<String, String> yesterdayVersion, Map<String, String> todayVersion);
 
     /**
      * Проверяет были ли удалены страницы

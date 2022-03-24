@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import proj.websitesnotification.main.comparator_service.HashTableComparatorService;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +26,7 @@ public class HashTableComparatorServiceImpl implements HashTableComparatorServic
     }
 
     @Override
-    public Collection<String> getUrlsHtmlNew(Map<String, String> yesterdayVersion, Map<String, String> todayVersion) {
+    public List<String> getUrlsHtmlNew(Map<String, String> yesterdayVersion, Map<String, String> todayVersion) {
         Set<String> yesterdayUrls = yesterdayVersion.keySet();
         Set<String> todayUrls = todayVersion.keySet();
         return todayUrls.stream().filter(url -> !yesterdayUrls.contains(url)).collect(Collectors.toList());
